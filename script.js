@@ -5,15 +5,14 @@ function isNumber(n) {
     return !isNaN(parseInt(n)) && isFinite(n);
 }
 
-function guessTheNumberWithLimit() {
+function guessTheNumberWithLimit(tryCounter) {
     const originNumber = parseInt(Math.random() * 100 + 1); // загаданное число
     //console.log(originNumber);
-    let tryCounter = 10;
 
     function tryToGuess() {
         if (tryCounter === 0) {
             if (confirm('Попытки закончились, хотите сыграть еще?'))
-                guessTheNumberWithLimit();
+                guessTheNumberWithLimit(10);
             return;
         }
 
@@ -35,7 +34,7 @@ function guessTheNumberWithLimit() {
                 alert('Загаданное число больше ' + num + ', осталось попыток ' + tryCounter);
             else {
                 if (confirm('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?'))
-                    guessTheNumberWithLimit();
+                    guessTheNumberWithLimit(10);
                 return;
             }
         }
@@ -47,4 +46,4 @@ function guessTheNumberWithLimit() {
 }
 //#endregion Functions declaration
 
-guessTheNumberWithLimit();
+guessTheNumberWithLimit(10);
